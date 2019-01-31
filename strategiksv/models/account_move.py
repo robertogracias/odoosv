@@ -24,8 +24,9 @@ class sv_account_move(models.Model):
 	
 	@api.multi
 	def post(self,invoice=False):
+		raise ValidationError("El pago ")
 		inv=invoice
-		super(sv_account_move,self).post(invoice=inv)
+		super(sv_account_move,self).post(inv)
 		if self.sv_noagrupar:
 			self.env['job.container'].create({'sv_concepto': self.sv_concepto,'journal_id':self.journal_id,'state':'draft'})
 
