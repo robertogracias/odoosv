@@ -48,3 +48,19 @@ class sv_account_sign(models.Model):
 	company_id=fields.Many2one('res.company',string='Company',help='Company')
 
 
+class sv_landed_cost(models.Model):
+	_inherit = 'stock.landed.cost'
+	sv_referencia=fields.Char("Referencia")
+	sv_declaracion=fields.Char("Declaracion No.")
+	sv_guia=fields.Char("Guia/BL")
+	sv_comentario=fields.Char("Descripcion")
+	
+class sv_account_move(models.Model):
+	_inherit = 'product.category'
+	company_id=fields.Many2one('res.company',string='Company',help='Company')
+	
+
+class sv_product_tax(models.Model):
+	_inherit = 'product.template'
+	product_fiscal_type_id=fields.Many2one('strategiksv.product_fiscal_type',string='Tipo de producto fiscal',help='Posicion fiscal a asociar')
+	sv_tipo_costo=fields.Selection([('Seguro','Seguro'), ('Flete','Flete'), ('Impuestos','Impuestos'), ('Otros','Otros')],default='Otros',string='Tipo de Costo')
