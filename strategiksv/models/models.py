@@ -257,7 +257,6 @@ class sv_account_move(models.Model):
 	
 	@api.multi
 	def post(self,invoice=False):
-		raise ValidationError("El pago ")
 		inv=invoice
 		super(sv_account_move,self).post(inv)
 		if self.sv_noagrupar:
