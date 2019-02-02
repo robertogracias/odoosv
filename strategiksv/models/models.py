@@ -258,7 +258,7 @@ class sv_account_move(models.Model):
 	@api.multi
 	def post(self,invoice=False):
 		inv=invoice
-		super(sv_account_move,self).post(self,invoice=inv)
+		super(account_move,self).post(invoice=inv)
 		if self.sv_noagrupar:
 			self.env['job.container'].create({'sv_concepto': self.sv_concepto,'journal_id':self.journal_id,'state':'draft'})
 
