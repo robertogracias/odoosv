@@ -258,7 +258,7 @@ class sv_account_move(models.Model):
 	@api.multi
 	def post(self,invoice=False):
 		inv=invoice
-		res = super(sv_account_move,self).post()
+		res = super(sv_account_move,self).post(inv)
 		if self.sv_noagrupar:
 			self.env['job.container'].create({'sv_concepto': self.sv_concepto,'journal_id':self.journal_id,'state':'draft'})
 
@@ -287,7 +287,7 @@ class sv_landed_cost(models.Model):
 	sv_guia=fields.Char("Guia/BL")
 	sv_comentario=fields.Char("Descripcion")
 	
-class sv_account_move(models.Model):
+class sv_product_category(models.Model):
 	_inherit = 'product.category'
 	company_id=fields.Many2one('res.company',string='Company',help='Company')
 	
@@ -304,17 +304,3 @@ class sv_landed_cost(models.Model):
 	sv_guia=fields.Char("Guia/BL")
 	sv_comentario=fields.Char("Descripcion")
 	
-
-class sv_account_move(models.Model):
-	_inherit = 'product.category'
-	company_id=fields.Many2one('res.company',string='Company',help='Company')
-	
-
-class sv_product_tax(models.Model):
-	_inherit = 'product.template'
-	product_fiscal_type_id=fields.Many2one('strategiksv.product_fiscal_type',string='Tipo de producto fiscal',help='Posicion fiscal a asociar')
-	sv_tipo_costo=fields.Selection([('Seguro','Seguro'), ('Flete','Flete'), ('Impuestos','Impuestos'), ('Otros','Otros')],default='Otros',string='Tipo de Costo')
-#sv_descripcion_poliza=fields.Char("Descripcion Poliza")
-#sv_posicion_arancelaria= fields.Char("Posicion Arancelaria")
-#sv_arancel= field.Float("Arancel")
-
