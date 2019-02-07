@@ -13,7 +13,7 @@ class sv_product_fiscal_type(models.Model):
 
 
 class sv_company_tax(models.Model):
-	_name= 'strategiksv.company_tax'
+	_name='strategiksv.company_tax'
 	name= fields.Char("Impuestos nombre de la clasificacion")
 	fiscal_position_id=fields.Many2one('account.fiscal.position',string='Posicion fiscal',help='Posicion fiscal a asociar')
 	product_fiscal_type_id=fields.Many2one('strategiksv.product_fiscal_type',string='Tipo de producto fiscal',help='Posicion fiscal a asociar')
@@ -220,13 +220,13 @@ class sv_payment(models.Model):
 	sv_reporte = fields.Char(related='journal_id.sv_formato_cheque', store=True, string="formato")
 	sv_referencia = fields.Char("Numero cheque/transferencia")
 	sv_resumen= fields.Char("Concepto del pago")
-	state = fields.Selection([('draft', 'Draft'), ('posted', 'Posted'), ('sent', 'Sent'), ('reconciled', 'Reconciled'),('canceled', 'Canceled')], readonly=True, default='draft', copy=False, string="Status")
+	state = fields.Selection([('draft', 'Draft'), ('posted', 'Posted'), ('sent', 'Sent'), ('reconciled', 'Reconciled'),('cancelled', 'Cancelled')], readonly=True, default='draft', copy=False, string="Status")
 	
 	@api.multi
 	def cancel_payment(self):
 		for cc in self:
 			if cc.state == 'draft':
-				cc.state='canceled'
+				cc.state='cancelled'
 			else:
 				raise ValidationError("El pago debe estar en modo borrador")
 	
