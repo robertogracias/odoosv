@@ -36,7 +36,7 @@
                 <header>
                     <button name="open_cc" string="Abrir" type="object" class="oe_highlight" attrs="{'invisible':[('state', '!=', 'draft')]}"/>
                     <button name="close_cc" string="Cerrar" type="object" class="oe_highlight" attrs="{'invisible':[('state', '!=', 'open')]}"/>
-                    <button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_caja"/>
+                    <!--button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_caja"/-->
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>

@@ -8,9 +8,9 @@
 		  <xpath expr="//button[@name='post']" position="after">
 			  
 			<button name="cancel_payment" class="oe_highlight" states="draft" string="Anular" type="object"/>
-			<button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_cheque">
+			<!--button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_cheque">
 				
-			</button>
+			</button-->
 			
           </xpath>
           <xpath expr="//field[@name='payment_method_code']" position="after">

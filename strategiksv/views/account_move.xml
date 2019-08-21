@@ -19,9 +19,9 @@
       <field name="arch" type="xml">
 		  <xpath expr="//button[@name='button_cancel']" position="after">
 			  
-			<button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_partida">
+			<!--button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_partida">
 				
-			</button>
+			</button -->
           </xpath>
 		  <xpath expr="//field[@name='date']" position="after">
 			<field name="sv_concepto"/>			

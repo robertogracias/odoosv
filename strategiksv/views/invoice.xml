@@ -10,9 +10,9 @@
       <field name="arch" type="xml">
 		  <xpath expr="//button[@name='preview_invoice']" position="before">
 			  
-			<button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_invoice">
+			<!--button  class="btn btn-sm btn-primary" string="Imprimir" custom="click_invoice">
 				
-			</button>
+			</button-->
           </xpath>
           <xpath expr="//field[@name='number']" position="after">			
 			<div id="identidad" style="display:none"><field name="id" readonly="True"/></div>
