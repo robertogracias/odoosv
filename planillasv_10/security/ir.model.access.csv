@@ -1,1 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+planillasv_10_prestamo,planillasv_10_prestamo,model_planillasv_10_prestamo,base.group_user,1,1,1,1
+planillasv_10_banco,planillasv_10_banco,model_planillasv_10_banco,base.group_user,1,1,1,1
+planillasv_10_bono,planillasv_10_bono,model_planillasv_10_bono,base.group_user,1,1,1,1
+planillasv_10_incapacidad,planillasv_10_incapacidad,model_planillasv_10_incapacidad,base.group_user,1,1,1,1

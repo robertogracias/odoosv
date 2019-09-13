@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<openerp>
+<odoo>
     <data>
 
 		<record id="hr_view_sv_payslip" model="ir.ui.view">
@@ -35,12 +35,7 @@
                     </sheet>
                 </form>
             </field>
-        </record>
-        
-        
-        
-       
-        
+        </record>         
         <record model="ir.ui.view" id="view_sv_banco_tree">
             <field name="name">vi.hr.banco.tree</field>
             <field name="model">planillasv_10.banco</field>
@@ -68,7 +63,7 @@
         <menuitem name="Bancos -Prestamos " 
 			parent="hr_payroll.menu_hr_payroll_configuration" 
 			id="planillasv_10.banco" 
-			sequence="30" 
+			sequence="20" 
 			action="sv_banco_action"
 			/>
 			
@@ -243,22 +238,8 @@
         <menuitem name="Registro de incapacidades " 
 			parent="hr_payroll.menu_hr_payroll_root" 
 			id="planillasv_10.incapacidad" 
-			sequence="30" 
+			sequence="50" 
 			action="sv_incapacidad_action"
-			/>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       
+			/>       
     </data>
-</openerp>
+</odoo>
