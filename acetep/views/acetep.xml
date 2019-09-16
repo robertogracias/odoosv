@@ -15,7 +15,7 @@
  <form string="Nivel">
  <sheet>
  <group>
- <field name="nombre" placeholder="Nombre"/>
+ <field name="name" placeholder="Nombre"/>
  </group>
  </sheet>
  </form>
@@ -28,7 +28,7 @@
 <field name="model">acetep.nivel</field>
 <field name="arch" type="xml">
 <tree>
- <field name="nombre" placeholder="Nombre"/>
+ <field name="name" placeholder="Nombre"/>
  </tree>
  </field>
  </record>
@@ -62,7 +62,7 @@
  <form string="seccion">
  <sheet>
  <group>
- <field name="nombre" placeholder="Nombre"/>
+ <field name="name" placeholder="Nombre"/>
  <field name="horario" placeholder="Horario"/>
   <field name="nivel_id" placeholder="Nivel"/>
  </group>
@@ -77,7 +77,7 @@
 <field name="model">acetep.seccion</field>
 <field name="arch" type="xml">
 <tree>
-<field name="nombre" placeholder="Nombre"/>
+<field name="name" placeholder="Nombre"/>
 <field name="horario" placeholder="Horario"/>
 <field name="nivel_id" placeholder="Nivel"/>
  </tree>
@@ -114,7 +114,7 @@
  <form string="periodo">
  <sheet>
  <group>
- <field name="nombre" placeholder="Nombre"/>
+ <field name="name" placeholder="Nombre"/>
  </group>
  </sheet>
  </form>
@@ -127,7 +127,7 @@
 <field name="model">acetep.periodo</field>
 <field name="arch" type="xml">
 <tree>
-<field name="nombre" placeholder="Nombre"/>
+<field name="name" placeholder="Nombre"/>
  </tree>
  </field>
  </record>
@@ -161,7 +161,7 @@
  <form string="Niño">
  <sheet>
  <group>
- <field name="nombre" placeholder="Nombre"/>
+ <field name="name" placeholder="Nombre"/>
  <field name="partner_id" placeholder="Partner"/>
  </group>
  </sheet>
@@ -175,7 +175,7 @@
 <field name="model">acetep.nino</field>
 <field name="arch" type="xml">
 <tree>
-<field name="nombre" placeholder="Nombre"/>
+<field name="name" placeholder="Nombre"/>
  <field name="partner_id" placeholder="Partner"/>
  </tree>
  </field>

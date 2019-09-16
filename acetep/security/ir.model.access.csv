@@ -1,4 +1,3 @@
-
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 acetep_nivel,acetep_nivel,model_acetep_nivel,base.group_user,1,1,1,1
 acetep_seccion,acetep_seccion,model_acetep_seccion,base.group_user,1,1,1,1
