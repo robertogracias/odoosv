@@ -18,7 +18,7 @@ class Periodo(models.Model):
 
 class Partersv(models.Model):
     _inherit = 'res.partner'
-    nino_id = fields.One2many(comodel_name='acetep.nino', string='Contacto' ,inverse_name='partner_id' )
+    nino_id = fields.One2many(comodel_name='acetep.nino', inverse_name='partner_id' )
 
 class Ninio(models.Model):
     _name = 'acetep.nino'

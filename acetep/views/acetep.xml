@@ -162,11 +162,11 @@
  <sheet>
  <group>
  <field name="name" placeholder="Nombre"/>
- <field name="partner_id" placeholder="Partner"/>
+ <!--<field name="partner_id" placeholder="Partner"/> Para que no salga en form de partner-->  
  </group>
  </sheet>
  </form>
- </field>
+ </field> 
  </record>
 
   <!--view tree para Niño-->   
@@ -176,7 +176,7 @@
 <field name="arch" type="xml">
 <tree>
 <field name="name" placeholder="Nombre"/>
- <field name="partner_id" placeholder="Partner"/>
+ <!--<field name="partner_id" placeholder="Partner"/> para que no salga en form de partner-->  
  </tree>
  </field>
  </record>
