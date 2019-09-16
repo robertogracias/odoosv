@@ -1,54 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+    
+<!--Menu-->
+<menuitem id="main_menu" name="Acetep"/>
+<menuitem id="menu_sub" name="Menu"
+                  parent="main_menu"/>
+
  <!--form basico para nivel-->   
 <record model="ir.ui.view" id="acetep_nivel_form">
 <field name="name">acetep_nivel_form</field>
 <field name="model">acetep.nivel</field>
 <field name="arch" type="xml">
- <form string="Casa">
+ <form string="Nivel">
  <sheet>
  <group>
- <field name="name" placeholder="Nombre"/>
- <field name="code" placeholder="Codigo"/>
+ <field name="nombre" placeholder="Nombre"/>
  </group>
  </sheet>
  </form>
  </field>
  </record>
 
-  <!--view tree-->   
-<record model="ir.ui.view" id="optica_sv_casa_tree">
-<field name="name">optica_sv_casa_tree</field>
-<field name="model">optica_sv.casa</field>
+  <!--view tree para nivel-->   
+<record model="ir.ui.view" id="acetep_nivel_tree">
+<field name="name">acetep_nivel_tree</field>
+<field name="model">acetep.nivel</field>
 <field name="arch" type="xml">
 <tree>
- <field name="name" placeholder="Nombre"/>
- <field name="code" placeholder="Codigo"/>
+ <field name="nombre" placeholder="Nombre"/>
  </tree>
  </field>
  </record>
+ 
 
-<!--Menu-->
-
-<!--Action-->
-        <record model="ir.actions.act_window" id="casa_list_action">
-            <field name="name">Creacion de casa </field>
-            <field name="res_model">optica_sv.casa</field>
+<!--Action para nivel-->
+        <record model="ir.actions.act_window" id="nivel_list_action">
+            <field name="name">Creacion de nivel </field>
+            <field name="res_model">acetep.nivel</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Crear Casa
+                <p class="oe_view_nocontent_create">Crear nivel
                 </p>
             </field>
         </record>
 
    <menuitem 
-   id="casa_menu" 
+   id="nivel_menu" 
    parent="menu_sub"
-   name="Casa"
-   action="casa_list_action"
+   name="Nivel"
+   action="nivel_list_action"
+   sequence="1"
+   /> 
+
+<!--form basico para Seccion-->   
+<record model="ir.ui.view" id="acetep_seccion_form">
+<field name="name">acetep_seccion_form</field>
+<field name="model">acetep.seccion</field>
+<field name="arch" type="xml">
+ <form string="seccion">
+ <sheet>
+ <group>
+ <field name="nombre" placeholder="Nombre"/>
+ <field name="horario" placeholder="Horario"/>
+  <field name="nivel_id" placeholder="Nivel"/>
+ </group>
+ </sheet>
+ </form>
+ </field>
+ </record>
+
+  <!--view tree para seccion-->   
+<record model="ir.ui.view" id="acetep_seccion_tree">
+<field name="name">acetep_seccion_tree</field>
+<field name="model">acetep.seccion</field>
+<field name="arch" type="xml">
+<tree>
+<field name="nombre" placeholder="Nombre"/>
+<field name="horario" placeholder="Horario"/>
+<field name="nivel_id" placeholder="Nivel"/>
+ </tree>
+ </field>
+ </record>
+ 
+
+<!--Action para seccion-->
+        <record model="ir.actions.act_window" id="seccion_list_action">
+            <field name="name">Creacion de seccion </field>
+            <field name="res_model">acetep.seccion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crear seccion
+                </p>
+            </field>
+        </record>
+
+   <menuitem 
+   id="seccion_menu" 
+   parent="menu_sub"
+   name="Seccion"
+   action="seccion_list_action"
    sequence="2"
    /> 
+
+
+<!--form basico para Periodo-->   
+<record model="ir.ui.view" id="acetep_periodo_form">
+<field name="name">acetep_periodo_form</field>
+<field name="model">acetep.periodo</field>
+<field name="arch" type="xml">
+ <form string="periodo">
+ <sheet>
+ <group>
+ <field name="nombre" placeholder="Nombre"/>
+ </group>
+ </sheet>
+ </form>
+ </field>
+ </record>
+
+  <!--view tree para periodo-->   
+<record model="ir.ui.view" id="acetep_periodo_tree">
+<field name="name">acetep_periodo_tree</field>
+<field name="model">acetep.periodo</field>
+<field name="arch" type="xml">
+<tree>
+<field name="nombre" placeholder="Nombre"/>
+ </tree>
+ </field>
+ </record>
+ 
+
+<!--Action para nivel-->
+        <record model="ir.actions.act_window" id="periodo_list_action">
+            <field name="name">Creacion de periodo </field>
+            <field name="res_model">acetep.periodo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crear periodo
+                </p>
+            </field>
+        </record>
+
+   <menuitem 
+   id="periodo_menu" 
+   parent="menu_sub"
+   name="Periodo"
+   action="periodo_list_action"
+   sequence="3"
+   /> 
+
+<!--form basico para Niño-->   
+<record model="ir.ui.view" id="acetep_nino_form">
+<field name="name">acetep_nino_form</field>
+<field name="model">acetep.nino</field>
+<field name="arch" type="xml">
+ <form string="Niño">
+ <sheet>
+ <group>
+ <field name="nombre" placeholder="Nombre"/>
+ <field name="partner_id" placeholder="Partner"/>
+ </group>
+ </sheet>
+ </form>
+ </field>
+ </record>
+
+  <!--view tree para Niño-->   
+<record model="ir.ui.view" id="acetep_nino_tree">
+<field name="name">acetep_nino_tree</field>
+<field name="model">acetep.nino</field>
+<field name="arch" type="xml">
+<tree>
+<field name="nombre" placeholder="Nombre"/>
+ <field name="partner_id" placeholder="Partner"/>
+ </tree>
+ </field>
+ </record>
+ 
+
+<!--Action para Niño-->
+        <record model="ir.actions.act_window" id="nino_list_action">
+            <field name="name">Creacion de Niño </field>
+            <field name="res_model">acetep.nino</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crear Niño
+                </p>
+            </field>
+        </record>
+
+   <menuitem 
+   id="nino_menu" 
+   parent="menu_sub"
+   name="Niño "
+   action="nino_list_action"
+   sequence="4"
+   /> 
+
  </data>
 </odoo>

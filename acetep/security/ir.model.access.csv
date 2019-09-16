@@ -1,6 +1,6 @@
 
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-acetep_nivel,acetep_nivel,model_acetep_nivel,account.group_account_user,1,1,1,1
-acetep_seccion,acetep_seccion,model_acetep_seccion,account.group_account_user,1,1,1,1
-acetep_periodo,acetep_periodo,model_acetep_periodo,account.group_account_user,1,1,1,1
-acetep_nino,acetep_nino,model_acetep_nino,account.group_account_user,1,1,1,1
+acetep_nivel,acetep_nivel,model_acetep_nivel,base.group_user,1,1,1,1
+acetep_seccion,acetep_seccion,model_acetep_seccion,base.group_user,1,1,1,1
+acetep_periodo,acetep_periodo,model_acetep_periodo,base.group_user,1,1,1,1
+acetep_nino,acetep_nino,model_acetep_nino,base.group_user,1,1,1,1

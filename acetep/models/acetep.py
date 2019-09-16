@@ -7,6 +7,7 @@ class Nivel(models.Model):
 class Seccion(models.Model):
     _name ='acetep.seccion' 
     nombre = fields.Char(string='Nombre')
+    horario = fields.Char(string='horario')
     nivel_id = fields.Many2one(comodel_name='acetep.nivel', string='Nivel')
 
 

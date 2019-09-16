@@ -16,6 +16,7 @@
     "depends": ['account'],
     "data": [
      'security/ir.model.access.csv',
+     'views/acetep.xml'
     ],
     "installable": True,
     "application": True,
