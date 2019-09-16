@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
- <!--form basico-->   
-<record model="ir.ui.view" id="optica_sv_casa_form">
-<field name="name">optica_sv_casa_form</field>
-<field name="model">optica_sv.casa</field>
+ <!--form basico para nivel-->   
+<record model="ir.ui.view" id="acetep_nivel_form">
+<field name="name">acetep_nivel_form</field>
+<field name="model">acetep.nivel</field>
 <field name="arch" type="xml">
  <form string="Casa">
  <sheet>
