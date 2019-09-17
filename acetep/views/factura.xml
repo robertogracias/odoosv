@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<record model="ir.ui.view" id="acetep_invoice_form">
+<field name="name">acetep_invoice_form</field>
+<field name="model">account.invoice</field>
+<field name="inherit_id" ref="account.invoice_form" />
+<field name="arch" type="xml">
+           <xpath expr="//field[@name='account_id']" position="after">			
+			<field name="periodo_id" />
+            <field name="partner_id" invisible="1" />
+            <field name="nino_id" domain= "['partner_id','=', partner_id]" />
+            <field name="seccion_id" />
+            <field name="nivel_id"/>
+          </xpath>
+ 
+ </field>
+ </record>
+
+ </data>
+</odoo>

@@ -17,7 +17,9 @@
     "data": [
      'security/ir.model.access.csv',
      'views/acetep.xml',
-     'views/partner.xml'
+     'views/partner.xml',
+     'views/factura.xml'
+
     ],
     "installable": True,
     "application": True,
