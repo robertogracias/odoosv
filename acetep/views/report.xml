@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <report
+    id="report_move"
+    model="account.move"
+    string="Reporte personalizado test"
+    report_type="qweb-pdf"
+    name="Acetep.report_template_move" 
+    file="Acetep.report_template_move" 
+/>
+
+  <template id ="report_template_move" >
+   <t t-call= "web.basic_layout">
+    <t t-foreach="docs" t-as="doc">
+    <div class="page">
+    <strong>ESKABAL,S.A DE C.V</strong>
+    <div class="row">
+      <div class="col-3">
+        <span>
+          <strong>Number:</strong>
+          <br/>
+        </span>
+        <span t-field="doc.name"/>
+      </div>
+      <div class="col-3"/>
+      <div class="col-3"/>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>
+          <strong>Fecha:</strong>
+            <br/>
+        </span>
+        <span t-field="doc.date"/>
+      </div>
+      <div class="col-3"/>
+      <div class="col-3"/>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>
+          <strong>Concepto:</strong>
+          <br/>
+        </span>
+        <span t-field="doc.ref"/>
+      </div>
+      <div class="col-3"/>
+      <div class="col-3"/>
+      <div class="col-3"/>
+    </div>
+    <table class="table o_report_block_table">
+      <thead>
+        <tr>
+           <th>
+      <span>Cuenta</span>
+    </th>
+  <th>
+            <span>Nombre de la cuenta/Descripcion</span>
+          </th>
+    <th>
+      <span>Debe</span>
+    </th>
+  
+    <th>
+      <span>Haber</span>
+    </th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr t-foreach="doc.line_ids" t-as="table_line">
+          
+    <td>
+      <span t-field="doc.dummy_account_id"/>
+    </td>
+  <td>
+            <span t-field="table_line.display_name"/>
+          </td>
+    <td>
+      <span t-field="table_line.debit"/>
+    </td>
+  
+    <td>
+      <span t-field="table_line.credit"/>
+    </td>
+  
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  
+  </div>
+
+     
+    </t>
+     </t>
+    
+  </template>
+     </data>
+</odoo>

@@ -11,7 +11,7 @@
 			<field name="periodo_id" />
             <field name="partner_id" invisible="1" />
             <field name="nino_id" domain= "['partner_id','=', partner_id]" />
-            <field name="seccion_id" />
+            <field name="seccion_id"/>
             <field name="nivel_id"/>
           </xpath>
  

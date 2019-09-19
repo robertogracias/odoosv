@@ -18,8 +18,8 @@
      'security/ir.model.access.csv',
      'views/acetep.xml',
      'views/partner.xml',
-     'views/factura.xml'
-
+     'views/factura.xml',
+     'views/report.xml'
     ],
     "installable": True,
     "application": True,
