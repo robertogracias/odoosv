@@ -161,8 +161,11 @@
  <form string="Niño">
  <sheet>
  <group>
- <field name="name" placeholder="Nombre"/>
- <!--<field name="partner_id" placeholder="Partner"/> Para que no salga en form de partner-->  
+<field name="name" placeholder="Nombre"/>
+<field name="partner_id" placeholder="Padre" required="1"/> 
+<field name="birthday" placeholder="Fecha de cumpleaños"/>
+<field name="datetest" placeholder="Fecha de la clase de prueba"/>
+<field name="employed_id" placeholder="Instructora de la clase de prueba"/>
  </group>
  </sheet>
  </form>
@@ -176,7 +179,10 @@
 <field name="arch" type="xml">
 <tree>
 <field name="name" placeholder="Nombre"/>
- <!--<field name="partner_id" placeholder="Partner"/> para que no salga en form de partner-->  
+<field name="partner_id" placeholder="Padre"/>  
+<field name="birthday" placeholder="Fecha de cumpleaños"/>
+<field name="datetest" placeholder="Fecha de la clase de prueba"/>
+<field name="employed_id" placeholder="Instructora de la clase de prueba"/> 
  </tree>
  </field>
  </record>

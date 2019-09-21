@@ -10,9 +10,10 @@
            <xpath expr="//field[@name='account_id']" position="after">			
 			<field name="periodo_id" />
             <field name="partner_id" invisible="1" />
-            <field name="nino_id" domain= "['partner_id','=', partner_id]" />
-            <field name="seccion_id"/>
+            <field name="nino_id" domain= "[['partner_id', '=', partner_id]]" />
+        
             <field name="nivel_id"/>
+            <field name="seccion_id" domain= "[['nivel_id' ,'=', nivel_id]]"/>
           </xpath>
  
  </field>
