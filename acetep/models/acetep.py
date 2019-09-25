@@ -19,7 +19,7 @@ class Periodo(models.Model):
 class Partersv(models.Model): #cliente padre
     _inherit = 'res.partner'
     nino_id = fields.One2many(comodel_name='acetep.nino', inverse_name='partner_id' )
-    how = fields.Selection([('Redes sociales','Redes sociales'), ('Referido','Referido'), ('Familiar','Familiar'), ('Pagina web','Pagina web'),  ('Pasaba por el local','Pasaba por el local'), ('Alianza','Alianza'), ('Otros','Otros')])
+    how = fields.Selection([('Redes sociales','Redes sociales'), ('Referido','Referido'), ('Familiar','Familiar'), ('Pagina web','Pagina web'),  ('Pasaba por el local','Pasaba por el local'), ('Alianza','Alianza'), ('Otros','Otros')],string="Como se entero?")
 
 class Nino(models.Model):
     _name = 'acetep.nino'
@@ -35,6 +35,11 @@ class Invoice(models.Model):
     nivel_id =fields.Many2one(comodel_name='acetep.nivel', string='Nivel')
     seccion_id =fields.Many2one(comodel_name='acetep.seccion', string='seccion')
     periodo_id =fields.Many2one(comodel_name='acetep.periodo', string='periodo')
+
+class Invoiceline(models.Model):
+    _inherit='account.invoice' 
+    facturade=fields.Char(string="Factura a nombre de ")
+
 
 class Employed(models.Model):
     _inherit='hr.employee'

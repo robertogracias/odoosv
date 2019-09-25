@@ -14,25 +14,18 @@
    <t t-call= "web.basic_layout">
     <t t-foreach="docs" t-as="doc">
     <div class="page">
-    <strong>ESKABAL,S.A DE C.V</strong>
+    <strong style="font-size:135px;margin-left:390px">ESKABAL,S.A DE C.V</strong>
     <div class="row">
-      <div class="col-3">
-        <span>
-          <strong>Number:</strong>
-          <br/>
-        </span>
-        <span t-field="doc.name"/>
-      </div>
       <div class="col-3"/>
       <div class="col-3"/>
     </div>
     <div class="row">
       <div class="col-3">
         <span>
-          <strong>Fecha:</strong>
+          <strong style="margin-left:400px">Fecha:</strong>
             <br/>
         </span>
-        <span t-field="doc.date"/>
+        <span style="margin-left:500px" t-field="doc.date"/>
       </div>
       <div class="col-3"/>
       <div class="col-3"/>
@@ -40,16 +33,16 @@
     <div class="row">
       <div class="col-12">
         <span>
-          <strong>Concepto:</strong>
+          <strong>Concepto de la poliza:</strong>
           <br/>
         </span>
-        <span t-field="doc.ref"/>
+        <span style="margin-left:30px" t-field="doc.ref"/>
       </div>
       <div class="col-3"/>
       <div class="col-3"/>
       <div class="col-3"/>
     </div>
-    <table class="table o_report_block_table">
+    <table class="table o_report_block_table" style="width:830px;margin-top:100px;width:100%;font-size:25px">
       <thead>
         <tr>
            <th>
@@ -92,8 +85,33 @@
   
   
   </div>
+  <div class="footer">
 
      
+    <table class="table o_report_block_table" style="widht:500px">
+    <tr>
+    <th>
+                <span >Totales:</span>
+    </th>
+    </tr>
+    <tr>
+    <th>
+    <span>Hecho por:</span>
+    </th>
+    <th>
+     <span>Revisado:</span>
+    </th>
+    <th>
+     <span>Autorizado:</span>
+    </th>
+    <th>
+     <span>Auxiliares:</span>
+    </th>
+    </tr>
+   
+            </table>
+            
+  </div>
     </t>
      </t>
     

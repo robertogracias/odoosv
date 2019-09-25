@@ -11,12 +11,15 @@
 			<field name="periodo_id" />
             <field name="partner_id" invisible="1" />
             <field name="nino_id" domain= "[['partner_id', '=', partner_id]]" />
-        
             <field name="nivel_id"/>
             <field name="seccion_id" domain= "[['nivel_id' ,'=', nivel_id]]"/>
           </xpath>
- 
+  
+           <xpath expr="//field[@name='payment_term_id']" position="after">
+           	<field name="facturade" />
+            </xpath>		
  </field>
+
  </record>
 
  </data>

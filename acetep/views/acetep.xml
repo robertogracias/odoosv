@@ -161,11 +161,15 @@
  <form string="Niño">
  <sheet>
  <group>
+ 
 <field name="name" placeholder="Nombre"/>
+<field name="employed_id" placeholder="Instructora de la clase de prueba"/>
 <field name="partner_id" placeholder="Padre" required="1"/> 
 <field name="birthday" placeholder="Fecha de cumpleaños"/>
 <field name="datetest" placeholder="Fecha de la clase de prueba"/>
-<field name="employed_id" placeholder="Instructora de la clase de prueba"/>
+
+
+
  </group>
  </sheet>
  </form>
@@ -194,6 +198,7 @@
             <field name="res_model">acetep.nino</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Crear Niño
                 </p>

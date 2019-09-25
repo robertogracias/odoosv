@@ -12,8 +12,14 @@
         <field name="nino_id"/>   
     </group>
  </xpath>
+ <xpath expr="//field[@name='vat']" position="after">
+        <field name="how"/>   
+ </xpath>
+ 
  </field>
  </record>
+
+
 
  </data>
 </odoo>
