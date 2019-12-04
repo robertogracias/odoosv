@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <report
+    id="report_move"
+    model="account.move"
+    string="Reporte personalizado test"
+    report_type="qweb-pdf"
+    name="Acetep.report_template_move" 
+    file="Acetep.report_template_move" 
+/>
+
+  <template id ="report_template_move" >
+   <t t-call= "web.basic_layout">
+    <t t-foreach="docs" t-as="doc">
+    <div class="page">
+    <strong style="font-size:135px;margin-left:390px">ESKABAL,S.A DE C.V</strong>
+    <div class="row">
+      <div class="col-3"/>
+      <div class="col-3"/>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>
+          <strong style="margin-left:400px">Fecha:</strong>
+            <br/>
+        </span>
+        <span style="margin-left:500px" t-field="doc.date"/>
+      </div>
+      <div class="col-3"/>
+      <div class="col-3"/>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>
+          <strong>Concepto de la poliza:</strong>
+          <br/>
+        </span>
+        <span style="margin-left:30px" t-field="doc.ref"/>
+      </div>
+      <div class="col-3"/>
+      <div class="col-3"/>
+      <div class="col-3"/>
+    </div>
+    <table class="table o_report_block_table" style="width:830px;margin-top:100px;width:100%;font-size:25px">
+      <thead>
+        <tr>
+           <th>
+      <span>Cuenta</span>
+    </th>
+  <th>
+            <span>Nombre de la cuenta/Descripcion</span>
+          </th>
+    <th>
+      <span>Debe</span>
+    </th>
+  
+    <th>
+      <span>Haber</span>
+    </th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr t-foreach="doc.line_ids" t-as="table_line">
+          
+    <td>
+      <span t-field="doc.dummy_account_id"/>
+    </td>
+  <td>
+            <span t-field="table_line.display_name"/>
+          </td>
+    <td>
+      <span t-field="table_line.debit"/>
+    </td>
+  
+    <td>
+      <span t-field="table_line.credit"/>
+    </td>
+  
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  
+  </div>
+  <div class="footer">
+
+     
+    <table class="table o_report_block_table" style="widht:500px">
+    <tr>
+    <th>
+                <span >Totales:</span>
+    </th>
+    </tr>
+    <tr>
+    <th>
+    <span>Hecho por:</span>
+    </th>
+    <th>
+     <span>Revisado:</span>
+    </th>
+    <th>
+     <span>Autorizado:</span>
+    </th>
+    <th>
+     <span>Auxiliares:</span>
+    </th>
+    </tr>
+   
+            </table>
+            
+  </div>
+    </t>
+     </t>
+    
+  </template>
+     </data>
+</odoo>

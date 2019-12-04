@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+ <!--form basico-->   
+<record model="ir.ui.view" id="acetep_partner_form">
+<field name="name">acetep_partner_form</field>
+<field name="model">res.partner</field>
+<field name="inherit_id" ref="base.view_partner_form" />
+<field name="arch" type="xml">
+ <xpath expr="//page[@name='sales_purchases']" position="after">
+    <group string="Niño">
+        <field name="nino_id"/>   
+    </group>
+ </xpath>
+ <xpath expr="//field[@name='vat']" position="after">
+        <field name="how"/>   
+ </xpath>
+ 
+ </field>
+ </record>
+
+
+
+ </data>
+</odoo>
