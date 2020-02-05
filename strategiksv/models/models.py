@@ -104,7 +104,7 @@ class sv_invoice_line(models.Model):
 		if taxes is not None:
 			if self.invoice_id.type in ('in_invoice', 'in_refund'):
 				prec = self.env['decimal.precision'].precision_get('Product Price')
-				if not self.price_unit or float_compare(self.price_unit, self.product_id.standard_price, precision_digits=prec) == 0:
+				if not self.price_unit:
 					self.price_unit = fix_price(self.product_id.standard_price, taxes, fp_taxes)
 			else:
 				self.price_unit = fix_price(self.product_id.lst_price, taxes, fp_taxes)
