@@ -56,20 +56,7 @@
     </record>
     
     
-    <record model="ir.ui.view" id="strategiksv.sale_order_form">
-	  <field name="inherit_id" ref="sale.view_order_form"/>	 
-      <field name="name">strategiksv sale order form</field>
-      <field name="model">sale.order</field>
-      <field name="arch" type="xml">
-		  <xpath expr="//button[@name='print_quotation']" position="replace">
-			  <div id="identidad" style="display:none"><field name="id" invisible="1" readonly="True"/></div>
-			<button  class="btn btn-sm btn-primary" string="Vale" custom="click_venta">
-				
-			</button>
-          </xpath>
-       </field>
-    </record>
-    
+
     
 	
   </data>
