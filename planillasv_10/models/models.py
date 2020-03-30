@@ -124,6 +124,18 @@ class sv_hr_payslip(models.Model):
 		else:
 			self.sv_days=30
 
+class sv_hr_payslip(models.Model):
+    _inherit = 'hr.payslip.run'
+    struct_id=fields.Many2one('hr.payroll.structure',string='Structura Salaria a aplicar')
+    
+    @api.multi
+    def calcular_planilla(self):
+        for r in self:
+            for p in r.slip_ids:
+                p.struct_id=r.struct_id.id
+                p.journal_id=r.journal_id
+                p.compute_sheet()
+
 class sv_hr_bono(models.Model):
 	_name = 'planillasv_10.bono'
 	_description = "Registro de bonos"
