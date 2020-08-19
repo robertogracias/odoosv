@@ -12,4 +12,4 @@ _logger = logging.getLogger(__name__)
 class stock_valuation_adjusment_lines(models.Model):
     _inherit = "stock.valuation.adjustment.lines"
 
-    additional_landed_cost = fields.Float(string="Costes adicionales en destino", required=True)
+    additional_landed_cost = fields.Float(string="Costes adicionales en destino", required=False)
