@@ -476,6 +476,7 @@ class res_company(models.Model):
         ,Sum(SS.retenido) as Retenido
         ,estado
         FROM (
+            
         select S.fecha
         ,S.sucursal
         ,S.factura
@@ -496,6 +497,7 @@ class res_company(models.Model):
         else 0.00 end as IvaExportacion
         ,S.Retenido
         from(
+            
         select ai.date_invoice as fecha
         ,ai.sucursal_id as sucursal
         ,coalesce(ai.reference,ai.number) as factura
@@ -553,26 +555,7 @@ class res_company(models.Model):
         
         union 
         
-        select S.fecha
-        ,S.sucursal
-        ,S.factura
-        ,S.estado
-        ,S.grupo
-        ,S.exento
-        ,case
-        when S.sv_region='Local' then S.Gravado
-        else 0.00 end as GravadoLocal
-        ,case
-        when S.sv_region!='Local' then S.Gravado
-        else 0.00 end as GravadoExportacion
-        ,case
-        when S.sv_region='Local' then S.Iva
-        else 0.00 end as IvaLocal
-        ,case
-        when S.sv_region!='Local' then S.Iva
-        else 0.00 end as IvaExportacion
-        ,S.Retenido
-        from(
+        
         select ai.date_invoice as fecha
         ,ai.sucursal_id as sucursal
         ,coalesce(ai.reference,ai.number) as factura
@@ -650,7 +633,7 @@ class res_company(models.Model):
         and ((ai.sv_no_tax is null ) or (ai.sv_no_tax=false))
         and afp.sv_contribuyente=false
         and ai.state in ('cancel')
-        )S )SS group by SS.fecha,SS.sucursal,SS.Grupo,SS.estado order by SS.fecha,SS.Grupo)""".format(company_id,date_year,date_month,sv_invoice_serie_size)
+        )S )SS group by SS.fecha,SS.sucursal,SS.Grupo,SS.estado order by SS.fecha,SS.Grupo""".format(company_id,date_year,date_month,sv_invoice_serie_size)
         tools.drop_view_if_exists(self._cr, 'strategiksv_reportesv_consumer_report')
         self._cr.execute(func) #Create the function used on view creation
         self._cr.execute(sql) #Query for view"
