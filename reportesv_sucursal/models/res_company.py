@@ -438,7 +438,7 @@ class res_company(models.Model):
         where date_part('year',COALESCE(F.sv_fecha_tax,F.date_invoice))= year_number
         and date_part('month',COALESCE(F.sv_fecha_tax,F.date_invoice))= month_number
         and F.state<>'draft' and F.company_id=p_company_id
-        and ai.type in ('out_invoice','out_refund')
+        and F.type in ('out_invoice','out_refund')
         and ((F.sv_no_tax is null ) or (F.sv_no_tax=false))
         and afp.sv_contribuyente=false
         order by fecha,factura )
