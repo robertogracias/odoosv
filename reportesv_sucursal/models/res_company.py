@@ -438,7 +438,7 @@ class res_company(models.Model):
         where date_part('year',COALESCE(F.sv_fecha_tax,F.date_invoice))= year_number
         and date_part('month',COALESCE(F.sv_fecha_tax,F.date_invoice))= month_number
         and F.state<>'draft' and F.company_id=p_company_id
-        and F.type in ('out_invoice')
+        and ai.type in ('out_invoice','out_refund')
         and ((F.sv_no_tax is null ) or (F.sv_no_tax=false))
         and afp.sv_contribuyente=false
         order by fecha,factura )
@@ -549,6 +549,83 @@ class res_company(models.Model):
         and ((ai.sv_no_tax is null ) or (ai.sv_no_tax=false))
         and afp.sv_contribuyente=false
         and ai.state in ('open','paid')
+        
+        
+        union 
+        
+        select S.fecha
+        ,S.sucursal
+        ,S.factura
+        ,S.estado
+        ,S.grupo
+        ,S.exento
+        ,case
+        when S.sv_region='Local' then S.Gravado
+        else 0.00 end as GravadoLocal
+        ,case
+        when S.sv_region!='Local' then S.Gravado
+        else 0.00 end as GravadoExportacion
+        ,case
+        when S.sv_region='Local' then S.Iva
+        else 0.00 end as IvaLocal
+        ,case
+        when S.sv_region!='Local' then S.Iva
+        else 0.00 end as IvaExportacion
+        ,S.Retenido
+        from(
+        select ai.date_invoice as fecha
+        ,ai.sucursal_id as sucursal
+        ,coalesce(ai.reference,ai.number) as factura
+        ,'valid' as estado
+        ,FG.grupo
+        ,afp.sv_region
+        ,/*Calculando el gravado (todo lo que tiene un impuesto aplicado de iva)*/
+        (select coalesce(sum(price_total),0.00)
+        from account_invoice_line ail
+        where invoice_id=ai.id
+        and exists(select ailt.tax_id
+        from account_invoice_line_tax ailt
+        inner join account_tax atx on ailt.tax_id=atx.id
+        inner join account_tax_group atg on atx.tax_group_id=atg.id
+        where ailt.invoice_line_id=ail.id and atg.name='iva')
+        )*-1 as Gravado,
+        /*Calculando el excento que no tiene iva*/
+        (Select coalesce(sum(price_total),0.00)
+        from account_invoice_line ail
+        where invoice_id=ai.id
+        and not exists(select ailt.tax_id
+        from account_invoice_line_tax ailt
+        inner join account_tax atx on ailt.tax_id=atx.id
+        inner join account_tax_group atg on atx.tax_group_id=atg.id
+        where ailt.invoice_line_id=ail.id and atg.name='iva')
+        )*-1 as Exento
+        ,/*Calculando el iva*/
+        (Select coalesce(sum(ait.amount),0.00)
+        from account_invoice_tax ait
+        inner join account_tax atx on ait.tax_id=atx.id
+        inner join account_tax_group atg on atx.tax_group_id=atg.id
+        where invoice_id=ai.id
+        and atg.name='iva'
+        )*-1 as Iva
+        ,/*Calculando el retenido*/
+        (Select coalesce(sum(ait.amount),0.00)
+        from account_invoice_tax ait
+        inner join account_tax atx on ait.tax_id=atx.id
+        inner join account_tax_group atg on atx.tax_group_id=atg.id
+        where invoice_id=ai.id
+        and atg.name='retencion'
+        )*-1 as Retenido
+        from account_invoice ai
+        inner join res_partner rp on ai.partner_id=rp.id
+        inner join (select * from FacturasAgrupadas({0} , {2}, {1} , {3})) FG on ai.id=FG.invoice_id
+        left join account_fiscal_position afp on ai.fiscal_position_id=afp.id
+        where ai.company_id= {0}
+        and date_part('year',COALESCE(ai.sv_fecha_tax,ai.date_invoice))= {1}
+        and date_part('month',COALESCE(ai.sv_fecha_tax,ai.date_invoice))=  {2}
+        and ai.type='out_refund'
+        and ((ai.sv_no_tax is null ) or (ai.sv_no_tax=false))
+        and afp.sv_contribuyente=false
+        and ai.state in ('open','paid')
 
         union
 
@@ -569,7 +646,7 @@ class res_company(models.Model):
         where ai.company_id= {0}
         and date_part('year',COALESCE(ai.sv_fecha_tax,ai.date_invoice))= {1}
         and date_part('month',COALESCE(ai.sv_fecha_tax,ai.date_invoice))= {2}
-        and ai.type='out_invoice'
+        and ai.type in ('out_invoice','out_refund')
         and ((ai.sv_no_tax is null ) or (ai.sv_no_tax=false))
         and afp.sv_contribuyente=false
         and ai.state in ('cancel')
